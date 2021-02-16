@@ -924,31 +924,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         debris.push(debra)
     }
 
-    class Radiator {
-        constructor(x,y){
-            this.body = new Circle(x,y, 50, "red")
-            this.emmiter = []
-        }
-        draw(){
-            if(Math.random()<1){
-                let alpha = new Circle(this.body.x, this.body.y, 5, "red", (Math.random()-.5)*10, (Math.random()-.5)*10)
-                this.emmiter.push(alpha)
-            }
-            for(let t = 0;t<this.emmiter.length;t++){
-                this.emmiter[t].move()
-                this.emmiter[t].draw()
-            }
-            for(let t = 0;t<this.emmiter.length;t++){
-                let link = new LineOP(this.emmiter[t], this.body)
-                if(link.hypotenuse() > 200){
-                    this.emmiter.splice(t,1)
-                }
-            }
-            this.body.draw()
-        }
-    }
-
-    let rad = new Radiator(300,300)
 
     function main() {
         // canvas_context.clearRect(0, 0, canvas.width, canvas.height)  // refreshes the image
@@ -960,6 +935,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
         for(let t = 0;t<debris.length;t++){
             debris[t].draw()
         }
-        rad.draw()
     }
 })
